@@ -14,7 +14,7 @@ interface Message {
 const Chat: React.FC<ChatProps> = ({ username }) => {
 	const [message, setMessage] = useState<string>("");
 	const [messages, setMessages] = useState<Message[]>([]);
-	const socket: Socket = io("http://localhost:3001");
+	const socket: Socket = io(import.meta.env.VITE_SERVER_URL || "http://localhost:3001");
 
 	useEffect(() => {
 		socket.on("chat message", (msg: Message) => {
